@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:superheroes_app/models/powerstats.dart';
-import 'package:superheroes_app/views/widgets/stat_card.dart';
+import 'package:superheroes_app/views/widgets/info_card.dart';
 
 import '../widgets/profile.dart';
 
@@ -36,12 +36,12 @@ class ProfileScreen extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          StatCard('intelligence', stats.intelligence),
-          StatCard('strength', stats.strength),
-          StatCard('speed', stats.speed),
-          StatCard('durability', stats.durability),
-          StatCard('power', stats.power),
-          StatCard('combat', stats.combat),
+          InfoCard('Intelligence 🧠', stats.intelligence),
+          InfoCard('Strength 💪', stats.strength),
+          InfoCard('Speed 🚄', stats.speed),
+          InfoCard('Durability 🛡️', stats.durability),
+          InfoCard('Power 🔥', stats.power),
+          InfoCard('Combat ⚔️', stats.combat),
         ],
       ),
     );

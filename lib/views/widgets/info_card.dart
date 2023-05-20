@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class StatCard extends StatelessWidget {
+class InfoCard extends StatelessWidget {
   final String type;
   final String value;
 
-  const StatCard(this.type, this.value, {Key? key}) : super(key: key);
+  const InfoCard(this.type, this.value, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
