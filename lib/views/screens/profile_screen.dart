@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:superheroes_app/models/powerstats.dart';
-import 'package:superheroes_app/views/widgets/info_card.dart';
-
+import 'package:superheroes_app/models/superhero.dart';
+import '../widgets/card_row.dart';
 import '../widgets/profile.dart';
+import 'details_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
-  final PowerStats stats;
+  final Superhero hero;
 
-  const ProfileScreen(this.stats, {Key? key}) : super(key: key);
+  const ProfileScreen(this.hero, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,32 +17,22 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Profile(),
-            _buildStatList(),
+            Profile(hero.name, hero.image),
+            CardRow(
+              const ['Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat'],
+              [hero.stats.intelligence, hero.stats.strength, hero.stats.speed, hero.stats.durability, hero.stats.power, hero.stats.combat]
+            ),
             ElevatedButton(
               onPressed: () {
-                print("Hello");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsScreen(hero)),
+                );
               },
               child: const Text('MORE'),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _buildStatList() {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          InfoCard('Intelligence 🧠', stats.intelligence),
-          InfoCard('Strength 💪', stats.strength),
-          InfoCard('Speed 🚄', stats.speed),
-          InfoCard('Durability 🛡️', stats.durability),
-          InfoCard('Power 🔥', stats.power),
-          InfoCard('Combat ⚔️', stats.combat),
-        ],
       ),
     );
   }

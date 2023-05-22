@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:superheroes_app/views/screens/details_screen.dart';
+import 'package:superheroes_app/views/screens/profile_screen.dart';
 
 import 'models/appearence.dart';
 import 'models/biography.dart';
@@ -37,7 +37,7 @@ Superhero batman = Superhero(
         'Batman Family, Batman Incorporated, Justice League, Outsiders, Wayne Enterprises, Club of Heroes, formerly White Lantern Corps, Sinestro Corps',
         'Damian Wayne (son), Dick Grayson (adopted son), Tim Drake (adopted son), Jason Todd (adopted son), Cassandra Cain (adopted ward)\nMartha Wayne (mother, deceased), Thomas Wayne (father, deceased), Alfred Pennyworth (former guardian), Roderick Kane (grandfather, deceased), Elizabeth Kane (grandmother, deceased), Nathan Kane (uncle, deceased), Simon Hurt (ancestor), Wayne Family'
     ),
-    'xyz'
+    'https://www.superherodb.com/pictures2/portraits/10/100/639.jpg'
 );
 
 class SuperheroesApp extends StatelessWidget {
@@ -46,7 +46,7 @@ class SuperheroesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: DetailsScreen(batman),
+      home: ProfileScreen(batman),
     );
   }
 }

@@ -14,27 +14,34 @@ class About extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Container(
         padding: const EdgeInsets.all(10),
-        child: Column(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildField('First Appearance:', bio.first),
-            _buildField('Alter Egos:', bio.alterEgo),
-            _buildField('Alias:', bio.aliases.toString()),
-            _buildField('Birth:', bio.placeOfBirth),
-            _buildField('Base:', work.base),
-            _buildField('Occupation:', work.occupation),
+            _buildField(
+              ['First Appearance:', 'Alter Egos:', 'Alias:', 'Birth:', 'Base:', 'Occupation:'],
+              20,
+              FontWeight.bold,
+            ),
+            const SizedBox(width: 20),
+            _buildField(
+              [bio.first, bio.alterEgo, bio.aliases.toString(), bio.placeOfBirth, work.base, work.occupation],
+              20,
+              FontWeight.normal,
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildField(String type, String value) {
-    return Row(
+  Widget _buildField(List<String> list, double sz, FontWeight wt) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(type, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-        const SizedBox(width: 100),
-        Text(value, style: const TextStyle(fontSize: 18)),
+        for (var l in list)
+          Text(l, style: TextStyle(fontSize: sz, fontWeight: wt))
       ],
     );
   }

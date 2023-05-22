@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({Key? key}) : super(key: key);
+  final String name;
+  final String path;
+
+  const Profile(this.name, this.path, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +19,9 @@ class Profile extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(20))
             ),
             clipBehavior: Clip.antiAlias,
-            child: Image.network("https://www.superherodb.com/pictures2/portraits/10/100/639.jpg"),
+            child: Image.network(path),
           ),
-          const Text('BATMAN', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)
+          Text(name.toUpperCase(), style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold))
         ],
       ),
     );

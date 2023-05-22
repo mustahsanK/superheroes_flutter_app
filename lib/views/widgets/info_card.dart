@@ -16,8 +16,8 @@ class InfoCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(type, style: const TextStyle(fontSize: 20),),
-              Text(value, style: const TextStyle(fontSize: 30),),
+              Text(type, style: const TextStyle(fontSize: 20)),
+              Text(value, style: const TextStyle(fontSize: 30)),
             ],
           ),
         ),

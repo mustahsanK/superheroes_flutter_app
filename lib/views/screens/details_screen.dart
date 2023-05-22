@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:superheroes_app/models/superhero.dart';
 import 'package:superheroes_app/views/widgets/about.dart';
+import 'package:superheroes_app/views/widgets/card_row.dart';
 import 'package:superheroes_app/views/widgets/info_list_card.dart';
 import 'package:superheroes_app/views/widgets/powerstat_bars.dart';
 import 'package:superheroes_app/views/widgets/top.dart';
-
-import '../widgets/info_card.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Superhero hero;
@@ -15,33 +14,24 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Top(hero.name, hero.bio.fullName, hero.bio.publisher),
-          About(hero.bio, hero.work),
-          _buildAppearanceList(),
-          PowerStatBars(hero.stats),
-          InfoListCard('Groups:', hero.connections.groups),
-          InfoListCard('Relatives:', hero.connections.relatives),
-        ],
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Top(hero.name, hero.bio.fullName, hero.bio.publisher),
+            About(hero.bio, hero.work),
+            CardRow(
+              const ['Gender', 'Race', 'Height', 'Weight', 'Eye Color', 'Hair Color'],
+              [hero.appearance.gender, hero.appearance.race, hero.appearance.height, hero.appearance.weight, hero.appearance.eye, hero.appearance.hair]
+            ),
+            PowerStatBars(hero.stats),
+            InfoListCard('Groups:', hero.connections.groups),
+            InfoListCard('Relatives:', hero.connections.relatives),
+          ],
+        ),
       )
-    );
-  }
-
-  Widget _buildAppearanceList() {
-    return const SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          InfoCard('Gender', 'Male'),
-          InfoCard('Race', 'Human'),
-          InfoCard('Height', '188 cm'),
-          InfoCard('Weight', '95 Kg'),
-          InfoCard('Eye Color', 'Blue'),
-          InfoCard('Hair Color', 'Black'),
-        ],
-      ),
     );
   }
 }

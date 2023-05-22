@@ -14,12 +14,12 @@ class Top extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(name, style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold)),
+          Text(name, style: const TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(fullName, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-              Text(publisher.toUpperCase(), style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+              Text(fullName, style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
+              Text(publisher.toUpperCase(), style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
             ],
           )
         ],
