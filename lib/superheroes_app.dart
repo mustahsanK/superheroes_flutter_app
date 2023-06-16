@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:superheroes_app/superheroes_theme.dart';
 import 'package:superheroes_app/views/screens/profile_screen.dart';
 
 import 'models/appearence.dart';
@@ -47,6 +48,7 @@ class SuperheroesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ProfileScreen(batman),
+      theme: appTheme,
     );
   }
 }

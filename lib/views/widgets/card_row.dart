@@ -9,13 +9,16 @@ class CardRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          for (int i = 0; i < titles.length; i++)
-            InfoCard(titles[i], values[i])
-        ],
+    return Container(
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            for (int i = 0; i < titles.length; i++)
+              InfoCard(titles[i], values[i])
+          ],
+        ),
       ),
     );
   }
