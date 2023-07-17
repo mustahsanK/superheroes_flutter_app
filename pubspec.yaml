@@ -70,10 +70,10 @@ flutter:
   fonts:
     - family: Kanit
       fonts:
-        - asset: fonts/Kanit-ExtraLight.ttf
-        - asset: fonts/Kanit-Light.ttf
-        - asset: fonts/Kanit-Medium.ttf
-        - asset: fonts/Kanit-Regular.ttf
+        - asset: assets/fonts/Kanit-ExtraLight.ttf
+        - asset: assets/fonts/Kanit-Light.ttf
+        - asset: assets/fonts/Kanit-Medium.ttf
+        - asset: assets/fonts/Kanit-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
