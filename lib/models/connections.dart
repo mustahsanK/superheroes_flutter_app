@@ -5,6 +5,6 @@ class Connections {
   Connections(this.groups, this.relatives);
 
   Connections.fromJson(Map<String, dynamic> json)
-    : groups = json['group-affiliations'],
+    : groups = json['group-affiliation'],
       relatives = json['relatives'];
 }

@@ -15,4 +15,14 @@ class Superhero {
   String image;
 
   Superhero(this.id, this.name, this.stats, this.bio, this.appearance, this.work, this.connections, this.image);
+
+  Superhero.fromJson(Map<String, dynamic> json)
+    : id = json['id'],
+      name = json['name'],
+      stats = PowerStats.fromJson(json['powerstats']),
+      bio = Biography.fromJson(json['biography']),
+      appearance = Appearance.fromJson(json['appearance']),
+      work = Work.fromJson(json['work']),
+      connections = Connections.fromJson(json['connections']),
+      image = json['image']['url'];
 }

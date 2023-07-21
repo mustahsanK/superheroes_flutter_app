@@ -14,7 +14,7 @@ class Appearance {
     : gender = json['gender'],
       race = json['race'],
       height = listFromJson(json['height'])[0],
-      weight = listFromJson(json['weight'])[0],
+      weight = listFromJson(json['weight'])[1],
       eye = json['eye-color'],
       hair = json['hair-color'];
 }
