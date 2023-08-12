@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/search_list.dart';
+
 class SearchScreen extends StatefulWidget {
   const SearchScreen({Key? key}) : super(key: key);
 
@@ -8,18 +10,25 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  TextEditingController controller = TextEditingController();
+  final textController = TextEditingController();
+  late String term;
+
+  @override
+  void initState() {
+    term = '';
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SafeArea(
         child: Column(
           children: [
             SizedBox(
-              width: 100,
+              width: double.infinity,
               child: TextField(
-                controller: controller,
+                controller: textController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Enter Name',
@@ -28,13 +37,16 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
             const SizedBox(height: 10),
             ElevatedButton(
-              onPressed: () {
-                //here
-              },
-              child: const Text('Search')
-            )
+                onPressed: () {
+                  setState(() {
+                    term = textController.text;
+                  });
+                },
+                child: const Text('Search')
+            ),
+            if (term != ' ') Expanded(child: SearchList(term)),
           ],
-        )
+        ),
       ),
     );
   }
