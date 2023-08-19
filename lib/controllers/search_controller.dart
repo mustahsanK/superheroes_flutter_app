@@ -7,12 +7,7 @@ import '../access_token.dart';
 
 class SuperheroSearchController extends GetxController {
   List<Superhero> results = List<Superhero>.empty(growable: true).obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    getSearch('batman');
-  }
+  String term = '';
 
   getSearch(String key) async {
     Uri url = Uri.parse('https://superheroapi.com/api/$accessToken/search/$key');
@@ -26,5 +21,12 @@ class SuperheroSearchController extends GetxController {
     } else {
       throw Exception('Failed to load Superhero List');
     }
+  }
+
+  updateResult(String newTerm) {
+    term = newTerm;
+    results.clear();
+    getSearch(term);
+    update();
   }
 }

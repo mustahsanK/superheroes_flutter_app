@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../controllers/search_controller.dart';
 import '../widgets/search_list.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -10,12 +12,11 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
+  final searchController = Get.put(SuperheroSearchController());
   final textController = TextEditingController();
-  late String term;
 
   @override
   void initState() {
-    term = '';
     super.initState();
   }
 
@@ -38,13 +39,11 @@ class _SearchScreenState extends State<SearchScreen> {
             const SizedBox(height: 10),
             ElevatedButton(
                 onPressed: () {
-                  setState(() {
-                    term = textController.text;
-                  });
+                  searchController.updateResult(textController.text);
                 },
                 child: const Text('Search')
             ),
-            if (term != ' ') Expanded(child: SearchList(term)),
+            Expanded(child: SearchList()),
           ],
         ),
       ),

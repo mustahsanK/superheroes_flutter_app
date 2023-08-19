@@ -5,15 +5,15 @@ import '../../controllers/search_controller.dart';
 import '../screens/profile_screen.dart';
 
 class SearchList extends StatelessWidget {
-  final String term;
   final searchController = Get.put(SuperheroSearchController());
 
-  SearchList(this.term, {super.key});
+  SearchList({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GetX<SuperheroSearchController>(
       builder: (controller) {
+        if (controller.results.isEmpty) return const Text('Type to search!!!');
         return ListView.builder(
           itemCount: controller.results.length,
           itemBuilder: (context, index) {
