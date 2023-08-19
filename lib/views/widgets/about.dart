@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:superheroes_app/models/biography.dart';
 import 'package:superheroes_app/models/work.dart';
 
@@ -10,36 +11,33 @@ class About extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildField(
-          ['First Appearance:', 'Alter Egos:', 'Alias:', 'Birth:', 'Base:', 'Occupation:'],
-          20,
-          FontWeight.bold,
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: _buildField(
-            [bio.first, bio.alterEgo, bio.aliases.toString(), bio.placeOfBirth, work.base, work.occupation],
-            20,
-            FontWeight.normal,
-          ),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+      child: Column(
+        children: [
+          _buildField('First Appearance: ', bio.first),
+          _buildField('Alter Ego: ', bio.alterEgo),
+          _buildField('Alias: ', bio.aliases.toString()),
+          _buildField('Birth: ', bio.placeOfBirth),
+          _buildField('Base: ', work.base),
+          _buildField('Occupation: ', work.occupation),
+        ],
+      ),
     );
   }
 
-  Widget _buildField(List<String> list, double sz, FontWeight wt) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(10, 10, 0, 10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+  Widget _buildField(String h, String v) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 5, 0, 0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          for (var l in list)
-            Text(l, style: TextStyle(fontSize: sz, fontWeight: wt))
+          Expanded(child: Text(h, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
+          SizedBox(
+            width: 180,
+            child: Text(v, style: const TextStyle(fontSize: 16), maxLines: 15),
+          )
         ],
       ),
     );
