@@ -9,9 +9,11 @@ class InfoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: SizedBox(
-        height: 100,
-        width: 150,
+      child: Container(
+        constraints: const BoxConstraints(
+          minWidth: 150,
+          minHeight: 100,
+        ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
