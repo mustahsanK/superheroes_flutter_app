@@ -13,7 +13,7 @@ class SearchList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<SuperheroSearchController>(
       builder: (controller) {
-        if (controller.results.isEmpty) return const Text('Type to search!!!');
+        if (controller.results.isEmpty) return const Center(child: Text('Type to search!!!'));
         return ListView.builder(
           itemCount: controller.results.length,
           itemBuilder: (context, index) {
@@ -32,7 +32,7 @@ class SearchList extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                Get.to(ProfileScreen(controller.results[index].id));
+                Get.to(ProfileScreen(controller.results[index]));
               },
             );
           },
