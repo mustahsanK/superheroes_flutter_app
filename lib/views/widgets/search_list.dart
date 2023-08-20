@@ -13,7 +13,7 @@ class SearchList extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetX<SuperheroSearchController>(
       builder: (controller) {
-        if (controller.results.isEmpty) return const Center(child: Text('Type to search!!!'));
+        if (controller.results.isEmpty) return const Center(child: Text('No Result!!!'));
         return ListView.builder(
           itemCount: controller.results.length,
           itemBuilder: (context, index) {
@@ -27,7 +27,7 @@ class SearchList extends StatelessWidget {
                       height: 150,
                       child: Image.network(controller.results[index].image, fit: BoxFit.fitHeight)
                     ),
-                    Text(controller.results[index].name, style: const TextStyle(fontSize: 30))
+                    Text(controller.results[index].name, style: const TextStyle(fontSize: 30), maxLines: 3)
                   ],
                 ),
               ),

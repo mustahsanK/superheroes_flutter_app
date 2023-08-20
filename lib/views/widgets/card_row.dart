@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:superheroes_app/views/widgets/info_card.dart';
 
 class CardRow extends StatelessWidget {

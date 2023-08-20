@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+
 import 'package:superheroes_app/models/superhero.dart';
 import 'package:superheroes_app/views/widgets/about.dart';
 import 'package:superheroes_app/views/widgets/card_row.dart';
 import 'package:superheroes_app/views/widgets/info_list_card.dart';
 import 'package:superheroes_app/views/widgets/powerstat_bars.dart';
-import 'package:superheroes_app/views/widgets/top.dart';
+
+import '../widgets/top.dart';
 
 class DetailsScreen extends StatelessWidget {
   final Superhero hero;

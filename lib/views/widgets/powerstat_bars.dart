@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:superheroes_app/models/powerstats.dart';
 
 class PowerStatBars extends StatelessWidget {
@@ -35,7 +36,7 @@ class PowerStatBars extends StatelessWidget {
             SizedBox(
               height: 10,
               width: double.parse(value) * 2,
-              child: const ColoredBox(color: Colors.lightBlue),
+              child: const ColoredBox(color: Colors.white70),
             ),
           ],
         )

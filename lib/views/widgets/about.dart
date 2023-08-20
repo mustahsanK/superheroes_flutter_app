@@ -35,7 +35,7 @@ class About extends StatelessWidget {
         children: [
           Expanded(child: Text(h, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold))),
           SizedBox(
-            width: 180,
+            width: 200,
             child: Text(v, style: const TextStyle(fontSize: 16), maxLines: 15),
           )
         ],
