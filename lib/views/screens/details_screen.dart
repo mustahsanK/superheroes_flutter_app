@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:superheroes_app/models/superhero.dart';
 import 'package:superheroes_app/views/widgets/about.dart';
 import 'package:superheroes_app/views/widgets/card_row.dart';
+import 'package:superheroes_app/views/widgets/favourite_button.dart';
 import 'package:superheroes_app/views/widgets/info_list_card.dart';
 import 'package:superheroes_app/views/widgets/powerstat_bars.dart';
 
@@ -16,7 +17,7 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(actions: [FavoriteButton(30, hero)]),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
