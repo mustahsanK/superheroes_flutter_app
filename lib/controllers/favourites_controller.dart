@@ -11,8 +11,9 @@ class FavouritesController extends GetxController {
   getAllFavourites() async {
     final List<Map<String, dynamic>> maps = await SuperheroesDatabase().getAllRows();
     for (var map in maps) {
-      favouriteHeroes.add(await getHero(map['id']));
-      idSet.add(map['id']);
+      String id = map['id'].toString();
+      favouriteHeroes.add(await getHero(map['id'].toString()));
+      idSet.add(id);
     }
   }
 
@@ -26,5 +27,11 @@ class FavouritesController extends GetxController {
     await SuperheroesDatabase().deleteFromTable(hero);
     favouriteHeroes.removeWhere((element) => element.id == hero.id);
     idSet.remove(hero.id);
+  }
+
+  @override
+  void onInit() {
+    getAllFavourites();
+    super.onInit();
   }
 }

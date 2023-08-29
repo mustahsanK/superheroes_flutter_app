@@ -8,11 +8,11 @@ class SuperheroesDatabase {
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-    return await openDatabase(
+    return _database = await openDatabase(
       join(await getDatabasesPath(), 'superheroes_database.db'),
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE favourite(id INTEGER PRIMARY KEY, name STRING)'
+          'CREATE TABLE favourite(id STRING PRIMARY KEY, name STRING)'
         );
       },
       version: 1,
@@ -20,7 +20,7 @@ class SuperheroesDatabase {
   }
 
   Future<List<Map<String, dynamic>>> getAllRows() async {
-    final db = SuperheroesDatabase._database;
+    final db = _database;
     final maps = await db?.query('favourite');
     return List.generate(maps!.length, (index) {
       return {
@@ -31,7 +31,7 @@ class SuperheroesDatabase {
   }
 
   Future<void> deleteFromTable(Superhero hero) async {
-    final db = SuperheroesDatabase._database;
+    final db = _database;
     await db?.delete(
       'favourite',
       where: 'id = ?',
@@ -40,7 +40,7 @@ class SuperheroesDatabase {
   }
 
   Future<void> insertIntoTable(Superhero hero) async {
-    final db = SuperheroesDatabase._database;
+    final db = _database;
     await db?.insert(
       'favourite',
       {'id' : hero.id, 'name': hero.name}
