@@ -27,7 +27,7 @@ class Item extends StatelessWidget {
               alignment: Alignment.topCenter,
             ),
             onTap: () {
-              Get.to(ProfileScreen(hero));
+              Get.to(() => ProfileScreen(hero));
             },
           ),
           Text(

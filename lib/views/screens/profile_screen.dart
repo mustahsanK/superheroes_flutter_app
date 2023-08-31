@@ -26,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Get.to(DetailsScreen(hero));
+                Get.to(() => DetailsScreen(hero));
               },
               child: const Text('MORE'),
             ),
