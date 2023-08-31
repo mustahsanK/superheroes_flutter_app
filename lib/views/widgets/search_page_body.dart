@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:superheroes_app/views/widgets/search_list.dart';
 
+import 'search_list.dart';
 import '../../controllers/search_controller.dart';
 
 class SearchPageBody extends StatelessWidget {
@@ -12,31 +12,27 @@ class SearchPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            SizedBox(
-              width: double.infinity,
-              child: TextField(
-                controller: textController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Enter Name',
-                ),
+    return Column(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          child: TextField(
+            controller: textController,
+            decoration: InputDecoration(
+              hintText: 'Enter Name',
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(width: 1.0),
+                borderRadius: BorderRadius.circular(50)
               ),
             ),
-            const SizedBox(height: 10),
-            ElevatedButton(
-                onPressed: () {
-                  searchController.updateResult(textController.text);
-                },
-                child: const Text('Search')
-            ),
-            Expanded(child: SearchList()),
-          ],
+            onSubmitted: (s) {
+              searchController.updateResult(textController.text);
+            },
+          ),
         ),
-      ),
+        const SizedBox(height: 10),
+        Expanded(child: SearchList()),
+      ],
     );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'package:superheroes_app/views/widgets/list_item.dart';
 import '../../controllers/favourites_controller.dart';
 
 class FavouritePageBody extends StatelessWidget {
@@ -10,21 +11,20 @@ class FavouritePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(10),
-        child: GetX<FavouritesController>(
-          builder: (controller) {
-            if (controller.favouriteHeroes.isEmpty) return const Center(child: Text('Nan'));
-            return ListView.builder(
-              itemCount: controller.favouriteHeroes.length,
-              itemBuilder: (context, index) {
-                return Card(child: Text(controller.favouriteHeroes[index].id + controller.favouriteHeroes[index].name));
-              },
-            );
-          },
-        ),
-      ),
+    return GetX<FavouritesController>(
+      builder: (controller) {
+        if (controller.favouriteHeroes.isEmpty) return const Center(child: Text('Nan'));
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 2/3.6,
+          ),
+          itemCount: controller.favouriteHeroes.length,
+          itemBuilder: (context, index) {
+            return Item(controller.favouriteHeroes[index]);
+          }
+        );
+      },
     );
   }
 }
